@@ -1,27 +1,94 @@
-import React from "react";
-import phone from "../../assets/images/Phone.png";
-import email from "../../assets/images/EmailLogo.png";
-import linkedIn from "../../assets/images/LinkedIn.png";
-import gitHub from "../../assets/images/GitHub.png";
-import resume from "../../assets/images/MyResume.png";
-
+import React, { useState } from 'react';
+import { validateEmail } from '../../utils/helpers';
+import ContactIcons from '../ContactIcons';
+import emailjs from 'emailjs-com';
 
 function Contact() {
+  // form validation
+  const formData = {
+    name: "",
+    email: "",
+    message: ""
+  }
+
+  const [ formDetails, setFormDetails ] = useState(formData);
+  const { name, email, message } = formDetails;
+  const [ errorMessage, setErrorMessage ] = useState('');
+
+  function handleChange(e) {
+    if(e.target.name === 'email') {
+      if(!e.target.value.length) {
+        setErrorMessage(`${e.target.name} is required.`);
+      } 
+      const isValid = validateEmail(e.target.value);
+      if(!isValid) {
+        setErrorMessage('Please enter a valid email address!');
+      } else {
+        setErrorMessage('');
+      } 
+    } else {
+      if(!e.target.value.length) {
+        setErrorMessage(`${e.target.name.charAt(0).toUpperCase() + e.target.name.slice(1)} is required.`);
+        document.querySelector('.error-text').style.color = 'red';
+      } else {
+        setErrorMessage('');
+      }
+    }
+
+    if(!errorMessage) {
+      setFormDetails({...formDetails, [e.target.name]: e.target.value});
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if(name.length && email.length && message.length) {
+    document.querySelector('.error-text').style.color = 'green';
+    setErrorMessage('Sending...');  
+    emailjs.sendForm('service_c7kxqtt', 'template_5i6cymm', e.target, 'user_UGci4USn5Q0qobiw5r0mD')
+    .then((result) => {
+      console.log(result);
+      setErrorMessage('Thank you for your message! I will get back to you within 24-48 hours!');
+    }, (error) => {
+        console.log(error.text);
+        document.querySelector('.error-text').style.color = 'red';
+        setErrorMessage('Oops! Something went wrong. Please try again!');
+    });
+    setFormDetails(formData);
+    document.getElementById('contact-form').reset();
+    } else {
+      document.querySelector('.error-text').style.color = 'red';
+      setErrorMessage('One or more fields are empty. Please try again!');
+    }
+  }
 
   return (
-    <address id="contact">
-      <div className="contacts">
-        <h1>Contact Me</h1>
-      </div>
-      <div className="filler">
-          <img src={phone} alt="Call or text Kate at 6143156951" />
-          <a href="mailto: katensullivan55@gmail.com"><img src={email} alt="Email Kate at katensullivan55@gmail.com" /></a>
-          <a href="https://www.linkedin.com/in/kate-sullivan-37ab12225/" target="_blank" rel="noreferrer"><img src={linkedIn} alt="Go to Kate's LinkedIn Profile" /></a>
-          <a href="https://github.com/katensullivan55" target="_blank" rel="noreferrer"><img src={gitHub} alt="Go to Kate's GitHub profile" /></a>
-          <a href="https://drive.google.com/file/d/1Q7GFZmRId8z_83jE_V0rh_unw1v2V64e/view?usp=sharing" target="_blank" rel="noreferrer"><img src={resume} alt="Go to Kate's resume" /></a>
-      </div>
-    </address>
-  );
+    <section className="contact-section">
+      <h2 className="title-2">Let's Connect.</h2>
+      <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
+          <div className="form-input-container">
+            <label htmlFor="name">Name</label>
+            <input type="text" name="name" placeholder="Enter your name" onChange={handleChange} required/>
+          </div>
+          <div className="form-input-container">
+            <label htmlFor="email">Email address:</label>
+            <input type="email" name="email" placeholder="Enter your email" onChange={handleChange} required/>
+          </div>
+          <div className="form-input-container">
+            <label htmlFor="message">Message:</label>
+            <textarea rows="5" name="message" onChange={handleChange} required></textarea>
+          </div>
+          <div className="error-container">
+            <p className="error-text">{errorMessage}</p>
+          </div>
+          <div className="button-container">
+            <button type="submit">Submit</button>
+          </div>
+      </form>
+      <h2 className="title-2">Or</h2>
+      <ContactIcons />
+    </section>
+  )
 }
 
 export default Contact;

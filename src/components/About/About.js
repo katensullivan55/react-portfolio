@@ -1,25 +1,23 @@
-import React from "react";
-import photo from "../../assets/images/portraite.png"
+import React from 'react';
+import ContactIcons from '../ContactIcons';
+import aboutImg from '../../images/cover.jpg';
 
-function About() {
 
 
+function About({setCurrentLink}) {
   return (
-    <article id="about-me">
-      <div className="abtitle">
-          <h1>About Me</h1>
-      </div>
-      <div className="abcontent">
-          <img src={photo} alt="Kate Sullivan" />
-          <p>
-            Coding is new to me, but I'm excited to learn and grow more in the field!
-          <br></br>
-          <br></br>
-            I've worked administrative jobs previously that have allowed me to work on different projects and test different skills I'd like to develop. This led me to looking fo a field where I can be constantly learning and developing more skills. Coding is constant learning and being flexible to do more, and that's what I am good at.
-          </p>  
-      </div>  
-    </article>
-  );
+    <section id="about" className="about-section">
+    <img src={aboutImg} alt="" />
+    <h2 className="title-2">About Me.</h2>
+    <p className="description">
+    <span>New Full-Stack Developer who is learning coding and has a passion about building intuitive UI and user experience. <br/></span>
+    <span>Certificate holder of Full-Stack Web Development Program (Trilogy Coding Bootcamp) at The Ohio State University, Skills in HTML, CSS, JavaScript, responsive web design, front-end and back-end technologies. <br/></span> 
+    <span>Additional experience and skills in Git, and implememting computer software systems. Strengths in fast learning, creativity, flexibility, and teamwork.<br/></span>
+    <span className="cust-links" onClick={() => setCurrentLink('Contact')}><strong>Want to know more? <span className="sp-connect">Let's connect!</span></strong></span>
+    </p>
+    <ContactIcons />
+    </section>
+  )
 }
 
 export default About;
