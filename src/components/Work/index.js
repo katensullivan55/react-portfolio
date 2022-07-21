@@ -7,37 +7,37 @@ function Work() {
       projectLink: 'https://katensullivan55.github.io/weather-dashboard/',
       title: 'Weather Dashboard',
       description: 'HTML, CSS, & Javascript',
-      bgImage: require(`../../images/projects/weather-dashboard.jpg`).default,
+      bgImage: require(`/Users/katherinesullivan/Desktop/react-portfolio/src/assets/images/projects/weather-dashboard.jpg`).default,
       github: 'https://github.com/katensullivan55/weather-dashboard'
     },
-    {
+    /* {
       projectLink: 'https://budget-tracker-ksully.herokuapp.com/',
       title: 'Budget Tracker PWA',
       description: 'Javascript, Node, Express, MongoDB & Mongoose',
       bgImage: require(`../../images/projects/budget-tracker.jpg`).default,
       github: 'https://github.com/katensullivan55/budget-tracker'
-    },
+    }, 
     {
       projectLink: 'https://katensullivan55.github.io/taskinator/',
       title: 'Taskinator',
       description: 'HTML, CSS, & Javascript',
       bgImage: require(`../../images/projects/taskinator.JPG`).default,
       github: 'https://github.com/katensullivan55/taskinator'
-    },
+    }, */
     {
         projectLink: 'http://note-taker-kate.herokuapp.com/',
         title: 'Note Taker',
         description: 'HTML, CSS, Javascript, Node, Express',
-        bgImage: require(`../../images/projects/note-taker.jpg`).default,
+        bgImage: require(`/Users/katherinesullivan/Desktop/react-portfolio/src/assets/images/projects/note-taker.jpg`).default,
         github: 'https://github.com/katensullivan55/note-taker'
     },
-    {
+    /* {
         projectLink: 'https://katensullivan55.github.io/team-profile-generator/',
         title: 'Team Profile Generator CLI',
         description: 'HTML, CSS, Javascript & Node',
         bgImage: require(`../../images/projects/team-profile.jpg`).default,
         github: 'https://github.com/katensullivan55/team-profile-generator'
-    },
+    }, */
   ]
 
   function linkClick (link) {

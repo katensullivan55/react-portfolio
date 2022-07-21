@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { validateEmail } from '../../utils/helpers';
 import ContactIcons from '../ContactIcons';
-import emailjs from 'emailjs-com';
 
 function Contact() {
   // form validation
@@ -45,15 +44,6 @@ function Contact() {
     if(name.length && email.length && message.length) {
     document.querySelector('.error-text').style.color = 'green';
     setErrorMessage('Sending...');  
-    emailjs.sendForm('service_c7kxqtt', 'template_5i6cymm', e.target, 'user_UGci4USn5Q0qobiw5r0mD')
-    .then((result) => {
-      console.log(result);
-      setErrorMessage('Thank you for your message! I will get back to you within 24-48 hours!');
-    }, (error) => {
-        console.log(error.text);
-        document.querySelector('.error-text').style.color = 'red';
-        setErrorMessage('Oops! Something went wrong. Please try again!');
-    });
     setFormDetails(formData);
     document.getElementById('contact-form').reset();
     } else {
