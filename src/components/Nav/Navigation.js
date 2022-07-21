@@ -1,21 +1,27 @@
-import React from "react";
-import logo from "../../assets/images/Logo.png";
-import about from "../../assets/images/AboutMe.png";
-import projects from "../../assets/images/MyProjects.png";
-import contact from "../../assets/images/ContactMe.png";
-import mission from "../../assets/images/Mission.png";
+import React from 'react';
+import { mobileMenuToggle } from '../../utils/theme';
 
-function Nav() {
-  
+function Nav({ setCurrentLink, currentLink }) {
+
+  const navList = ['About Me', 'Work', 'Contact', 'Resume'];
+
   return (
-    <div className="nav" id="nav">
-      <a href="#hero"><img src={logo} alt="Kate Sullivan Software Engineer" /></a>
-      <a href="#about-me"><img src={about} alt="About Me" /></a>
-      <a href="#mission"><img src={mission} alt="My Mission" /></a>
-      <a href="#projects"><img src={projects} alt="My Projects" /></a>
-      <a href="#contact"><img src={contact} alt="Contact Me" /></a>
-    </div>
-  );
+    <nav className="nav-container nav-hide">
+      <ul className="nav">
+        {navList.map(nav => (
+          <li className="nav-item"
+            key={nav}>
+            <span
+            className={`${currentLink === nav && 'nav-active'}`}
+            onClick={() => {
+              setCurrentLink(nav);
+              mobileMenuToggle();
+            }}>{nav}</span>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
 }
 
 export default Nav;
