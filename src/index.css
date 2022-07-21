@@ -1,6 +1,6 @@
 :root {
-  --primary-font: 'Rubik', sans-serif;
-  --secondary-font:  'Poppins', sans-serif; 
+  --primary-font: 'Pacifico', sans-serif;
+  --secondary-font:  'Quicksand', sans-serif; 
 }
 
 * {
@@ -13,23 +13,23 @@ html {
 }
 
 .light-theme {
-  --primary-color: #394361;
-  --background-color: #F7F6F2;
-  --font-color: #394361;
-  --dm-accent-color: #CF455C;
+  --primary-color: #35455D;
+  --background-color: #CED2C2;
+  --font-color: #35455D;
+  --dm-accent-color: #92B1C8;
   --off-white: #ffffff;
   --box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
-  --button-color: #394361;
+  --button-color: #35455D;
   --focus-box-shadow: rgba(37, 37, 37, 0.05) 0px 0px 0px 1px, rgb(248, 52, 101) 0px 0px 0px 1px inset;
   --code-bg: #fff;
 }
 
 .dark-theme {
-  --primary-color: #D7D8DA;
-  --background-color: #1c1f26;
-  --font-color: #D7D8DA;
-  --dm-accent-color: #CF455C;
-  --off-white: #F7F6F2;
+  --primary-color: #ECDDD0;
+  --background-color: #3F3931;
+  --font-color: #ECDDD0;
+  --dm-accent-color: #92B1C8;
+  --off-white: #CED2C2;
   --box-shadow: rgb(121, 121, 121) 0px 0px 0px 1px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;
   --button-color: #1a1f27;
   --focus-box-shadow: rgba(37, 37, 37, 0.05) 0px 0px 0px 1px, rgb(248, 52, 101) 0px 0px 0px 1px inset;
@@ -38,9 +38,6 @@ html {
 
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 85vh;
@@ -128,11 +125,6 @@ a:hover, .cust-links:hover {
 
 .cust-links {
   margin-top: 20px;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 /* header container */
